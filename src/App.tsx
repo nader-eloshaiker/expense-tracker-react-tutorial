@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 
-function App() {
+import { AddTransaction } from './components/AddTransaction'
+import { Balance } from './components/Balance'
+import { GlobalProvider } from './context/GlobalState'
+import { Header } from './components/Header'
+import { IncomeExpenses } from './components/IncomeExpenses'
+import React from 'react'
+import { TransactionList } from './components/TransactionList'
+
+const App: React.VFC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <GlobalProvider>
+      <Header title="Expense Tracker" />
+      <div className="container">
+        <Balance />
+        <IncomeExpenses />
+        <TransactionList />
+        <AddTransaction />
+      </div>
+    </GlobalProvider>
+  )
 }
 
-export default App;
+export default App
